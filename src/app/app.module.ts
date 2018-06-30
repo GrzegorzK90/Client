@@ -7,7 +7,7 @@ import { routing } from './app.routing';
 import { AlertComponent } from './_directives';
 import { AuthGuard } from './_guards';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { AlertService, AuthenticationService, UserService } from './_services';
+import {AlertService, AuthenticationService, MyWorkService, UserService, WorkByPersonService} from './_services';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
@@ -18,6 +18,8 @@ import { DescriptionComponent } from './task/description/description.component';
 import { SourceComponent } from './task/source/source.component';
 import { TimeComponent } from './task/time/time.component';
 import {CustomMaterialModule} from './material.module';
+import {WorkByPersonComponent} from './work-by-person';
+import {DragulaModule} from 'ng2-dragula';
 
 @NgModule({
   imports: [
@@ -25,7 +27,8 @@ import {CustomMaterialModule} from './material.module';
     ReactiveFormsModule,
     HttpClientModule,
     routing,
-    CustomMaterialModule
+    CustomMaterialModule,
+    DragulaModule
   ],
   declarations: [
     AppComponent,
@@ -38,13 +41,16 @@ import {CustomMaterialModule} from './material.module';
     BugsComponent,
     DescriptionComponent,
     SourceComponent,
-    TimeComponent
+    TimeComponent,
+    WorkByPersonComponent,
   ],
   providers: [
     AuthGuard,
     AlertService,
     AuthenticationService,
     UserService,
+    WorkByPersonService,
+    MyWorkService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 

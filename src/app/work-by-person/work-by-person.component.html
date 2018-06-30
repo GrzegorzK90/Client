@@ -1,0 +1,19 @@
+<div class="wrapper" *ngFor="let user of users"  [id] ="user.userName">
+  <h2>{{user.userName}}</h2>
+  <div class='wrapper'>
+    <div class='container' *ngFor='let task of user.tasks' [dragula]='"nested-bag"' [id]="1">
+      <p>Open</p>
+      <div *ngFor='let item of task.open' (click)="infoXD(item.taskId)" [innerHtml]='item.taskName' [id]='item.taskId'></div>
+    </div>
+    <div class='container' *ngFor='let task of user.tasks' [dragula]='"nested-bag"' [id]="2">
+      <p>Planned</p>
+      <div *ngFor='let item of task.planed' (click)="infoXD()" [innerHtml]='item.taskName' [id]='item.taskId'></div>
+    </div>
+    <div class='container' *ngFor='let task of user.tasks' [dragula]='"nested-bag"' [id]="5">
+      <p>Done</p>
+      <div *ngFor='let item of task.Done' (click)="infoXD()" [innerHtml]='item.taskName' [id]='item.taskId'></div>
+    </div>
+  </div>
+  <hr>
+  {{user | json}}
+</div>
