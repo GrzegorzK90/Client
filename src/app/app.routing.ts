@@ -14,6 +14,8 @@ const appRoutes: Routes = [
   { path: 'task', component: TaskComponent, canActivate: [AuthGuard]},
   { path: 'workByPerson', component: WorkByPersonComponent, canActivate: [AuthGuard]},
   { path: 'myWork/:id', component: WorkByPersonComponent, canActivate: [AuthGuard]},
+  { path: 'test', component: TaskComponent, canActivate: [AuthGuard], outlet: 'test'},
+
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

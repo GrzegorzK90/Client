@@ -15,12 +15,15 @@
   <a class="active"[routerLink]="['/task']">Task</a>
   <a class="active"[routerLink]="['/workByPerson']">Work by person</a>
   <a class="active"[routerLink]="['/myWork/1']">My work</a>
-  <a href="#about">About</a>
+  <a href="#about">Backlog</a>
+  <a href="">User</a>
 </div>
 
 <div class="content">
   <router-outlet></router-outlet>
 </div>
-
+<div class="content">
+  <router-outlet name='test'></router-outlet>
+</div>
 </body>
 </html>

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import {tokenKey} from '@angular/core/src/view';
+import {getToken} from 'codelyzer/angular/styles/cssLexer';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -13,8 +15,9 @@ export class AuthenticationService {
         console.log('dupcia');
         // login successful if there's a jwt token in the response
         if (res && res.token) {
-          // store username and jwt token in local storage to keep user logged in between page refreshes
+          // store username and jwt token in local storage to keep user logged in between page refresher
           localStorage.setItem('currentUser', JSON.stringify({ username, token: res.token }));
+          console.log(JSON.parse(localStorage.getItem('currentUser')).token);
         }
       }));
   }

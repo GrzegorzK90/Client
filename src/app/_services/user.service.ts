@@ -16,6 +16,10 @@ export class UserService {
     return this.http.get(`http://localhost:8080/users/` + id);
   }
 
+  getData() {
+    return this.http.get(`http://localhost:8080/taskboard`);
+  }
+
   register(user: User) {
     return this.http.post(`http://localhost:8080/signup`, user, {headers: this.header});
   }

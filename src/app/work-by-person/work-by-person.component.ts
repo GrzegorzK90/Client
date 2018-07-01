@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {DragulaService} from 'ng2-dragula';
-import { WorkByPersonService, MyWorkService } from '../_services';
+import {WorkByPersonService, MyWorkService, UserService} from '../_services';
 import {ActivatedRoute} from '@angular/router';
 import {s} from '@angular/core/src/render3';
+import {errorHandler} from '@angular/platform-browser/src/browser';
 
 
 @Component({
@@ -20,12 +21,13 @@ export class WorkByPersonComponent implements OnInit{
     done: { taskName: string; taskId: number; }[]
   }[] = [];
 
-  users: { userId: number; userName: string; tasks: {
-      userId: number; open: {
-        taskName: string; taskId: number }[];
-      planed: { taskName: string; taskId: number }[];
-      done: { taskName: string; taskId: number }[] }[] }[] | number | string;
-  constructor(public dragulaService: DragulaService, private workByPersonService: WorkByPersonService, private myWorkService: MyWorkService, private route: ActivatedRoute) {
+  // users: { userId: number; userName: string; tasks: {
+  //     userId: number; open: {
+  //       taskName: string; taskId: number }[];
+  //     planed: { taskName: string; taskId: number }[];
+  //     done: { taskName: string; taskId: number }[] }[] }[] | number | string;
+  users: any;
+  constructor(public dragulaService: DragulaService, private userService: UserService , private workByPersonService: WorkByPersonService, private myWorkService: MyWorkService, private route: ActivatedRoute) {
     dragulaService.drag.subscribe((value) => {
       this.onDrag(value.slice(1));
     });
@@ -40,14 +42,13 @@ export class WorkByPersonComponent implements OnInit{
     });
   }
   ngOnInit() {
-    console.log(this.route.snapshot.params.id);
-    // this.tasks = this.tasks;
-    if (this.route.snapshot.params.id === '1'){
-      this.users = this.myWorkService.user;
-    } else {
-
-      this.users = this.workByPersonService.user;
-     }
+    // if (this.route.snapshot.params.id === '1'){
+    //   this.users = this.myWorkService.user;
+    // } else {
+      this.workByPersonService.getData().subscribe(data => {
+        this.users = data;
+      });
+     // }
   }
 
   private onDrag(args) {
