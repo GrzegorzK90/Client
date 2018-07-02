@@ -4,6 +4,7 @@ import {WorkByPersonService, MyWorkService, UserService} from '../_services';
 import {ActivatedRoute} from '@angular/router';
 import {s} from '@angular/core/src/render3';
 import {errorHandler} from '@angular/platform-browser/src/browser';
+import {TasksTaskBoard, User, UserTaskBoard} from '../_models';
 
 
 @Component({
@@ -15,18 +16,11 @@ import {errorHandler} from '@angular/platform-browser/src/browser';
 export class WorkByPersonComponent implements OnInit{
 
   param1: string;
-  tasks: { userId: number,
-    open: { taskName: string; taskId: number; }[],
-    planed: { taskName: string; taskId: number; }[],
-    done: { taskName: string; taskId: number; }[]
-  }[] = [];
 
-  // users: { userId: number; userName: string; tasks: {
-  //     userId: number; open: {
-  //       taskName: string; taskId: number }[];
-  //     planed: { taskName: string; taskId: number }[];
-  //     done: { taskName: string; taskId: number }[] }[] }[] | number | string;
-  users: any;
+  users: UserTaskBoard[] = [];
+
+  user = new UserTaskBoard;
+
   constructor(public dragulaService: DragulaService, private userService: UserService , private workByPersonService: WorkByPersonService, private myWorkService: MyWorkService, private route: ActivatedRoute) {
     dragulaService.drag.subscribe((value) => {
       this.onDrag(value.slice(1));
@@ -46,7 +40,9 @@ export class WorkByPersonComponent implements OnInit{
     //   this.users = this.myWorkService.user;
     // } else {
       this.workByPersonService.getData().subscribe(data => {
-        this.users = data;
+        this.user = data;
+        console.log(this.user);
+        this.users.push(this.user);
       });
      // }
   }

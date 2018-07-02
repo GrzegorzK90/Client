@@ -1,5 +1,7 @@
 import { Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {UserTaskBoard} from '../_models/index';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +34,9 @@ export class MyWorkService {
   ];
 
   constructor(private http: HttpClient) {}
-  getData(){
-    return this.http.get('http://localhost:8080/taskboard');
+
+  getData(): Observable<UserTaskBoard[]> {
+    return this.http.get<UserTaskBoard[]>('http://localhost:8080/taskboard');
   }
 
   //addTask(userId: number, taskId: number, taskName: string, type: number) {

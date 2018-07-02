@@ -1,19 +1,16 @@
-<div class="wrapper" *ngFor="let user of users"  [id] ="user.userName">
-  <h2>{{user.userName}}</h2>
+<div class="wrapper" *ngFor="let us of users"  [id] ="us.userName">
+  <h2>{{us.userName}}</h2>
   <div class='wrapper'>
-    <div class='container' *ngFor='let task of user.tasks' [dragula]='"nested-bag"' [id]="1">
+    <div class='container' [dragula]='"nested-bag"' [id]="1">
       <p>Open</p>
-      <div *ngFor='let item of task.open' (click)="infoXD(item.taskId)" [innerHtml]='item.taskName' [id]='item.taskId'></div>
+      <div *ngFor='let item of us.tasks.open' (click)="infoXD(item.taskId)" [innerHtml]='item.title' [id]='item.taskId'></div>
     </div>
-    <div class='container' *ngFor='let task of user.tasks' [dragula]='"nested-bag"' [id]="2">
-      <p>Planned</p>
-      <div *ngFor='let item of task.planed' (click)="infoXD()" [innerHtml]='item.taskName' [id]='item.taskId'></div>
-    </div>
-    <div class='container' *ngFor='let task of user.tasks' [dragula]='"nested-bag"' [id]="5">
+    <div class='container' [dragula]='"nested-bag"' [id]="1">
       <p>Done</p>
-      <div *ngFor='let item of task.Done' (click)="infoXD()" [innerHtml]='item.taskName' [id]='item.taskId'></div>
+      <div *ngFor='let item of us.tasks.close' (click)="infoXD(item.taskId)" [innerHtml]='item.title' [id]='item.taskId'></div>
     </div>
   </div>
   <hr>
-  {{user | json}}
+ <!-- {{us | json}}-->
 </div>
+

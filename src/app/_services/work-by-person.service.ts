@@ -1,14 +1,14 @@
 import { Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {TasksOfUsers} from '../_models';
+import {TasksOfUsers, UserTaskBoard} from '../_models';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class WorkByPersonService {
-  //header = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token).set( 'Content-Type', 'application/json');
+  header = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token).set( 'Content-Type', 'application/json');
 
   taskOfUser = [
     {
@@ -49,8 +49,8 @@ export class WorkByPersonService {
   ];
 
   constructor(private http: HttpClient) {}
-    getData(){
-    return this.http.get('http://localhost:8080/taskboard');
+  getData() {
+    return this.http.get<UserTaskBoard>('http://localhost:8080/taskboard');
   }
 
 

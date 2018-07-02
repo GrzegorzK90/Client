@@ -1,4 +1,10 @@
+import {User} from './user';
+
 export class Task {
-  id: number;
-  name: string;
+  taskId: number;
+  title: string;
+  content: string;
+  finished: boolean;
+  status: string;
+  user: User;
 }
