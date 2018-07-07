@@ -6,6 +6,7 @@ import { RegisterComponent } from './register';
 import { AuthGuard } from './_guards';
 import {TaskComponent} from './task';
 import {WorkByPersonComponent} from './work-by-person';
+import {MyWorkComponent} from './my-work';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -13,7 +14,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'task', component: TaskComponent, canActivate: [AuthGuard]},
   { path: 'workByPerson', component: WorkByPersonComponent, canActivate: [AuthGuard]},
-  { path: 'myWork/:id', component: WorkByPersonComponent, canActivate: [AuthGuard]},
+  { path: 'myWork', component: MyWorkComponent, canActivate: [AuthGuard]},
   { path: 'test', component: TaskComponent, canActivate: [AuthGuard], outlet: 'test'},
 
 

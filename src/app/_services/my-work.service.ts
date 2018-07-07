@@ -1,42 +1,33 @@
 import { Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {UserTaskBoard} from '../_models/index';
-import {Observable} from 'rxjs';
+import {HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
-// Task services
 export class MyWorkService {
 
+  constructor(private http: HttpClient,
+              private router: Router) {}
 
-  taskOfUser = [
-    {
-      userId: 1,
-      open: [{taskName: 'create good code', taskId: 1}, {taskName: 'do something', taskId: 4 }],
-      planed: [{taskName: 'test', taskId: 2}],
-      done: [{taskName: 'Ukonczone', taskId: 6}]
-    }
-  ];
+  getData() {
+    return this.http.get<any>('http://localhost:8080/taskboard');
+  }
 
+  update(taskId: number, newUserId: number, newStatus: string) {
+    return this.http.request('PUT', 'http://localhost:8080/taskboard', {
+      body: {
+        taskId: taskId,
+        newUserId: newUserId,
+        newStatus: newStatus}
+    }); }
 
-  tasks: { userId: number,
-    open: { taskName: string; taskId: number; }[],
-    planed: { taskName: string; taskId: number; }[],
-    done: { taskName: string; taskId: number; }[]
-  }[] = [];
-  user = [
-    {
-      userId: 1,
-      userName: 'bill',
-      tasks: this.taskOfUser
-    }
-  ];
+  delete(taskId: number) {
 
-  constructor(private http: HttpClient) {}
-
-  getData(): Observable<UserTaskBoard[]> {
-    return this.http.get<UserTaskBoard[]>('http://localhost:8080/taskboard');
+    return this.http.request('DELETE', 'http://localhost:8080/taskboard', {
+      body: { taskId: taskId }
+    });
   }
 
   //addTask(userId: number, taskId: number, taskName: string, type: number) {
