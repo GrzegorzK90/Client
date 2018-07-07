@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import {delay, first} from 'rxjs/operators';
 
-import { AuthenticationService } from '../_services/index';
+import { AuthenticationService } from '../../_services/index';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   templateUrl: 'login.component.html',
@@ -20,7 +21,9 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService) {}
+    private authenticationService: AuthenticationService,
+    public snackBar: MatSnackBar) {}
+
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -51,11 +54,14 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          this.snackBar.open('Hello World', '',  {duration: 600})
           this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;
-          this.loading = false;
+          this.snackBar.open('Error' + this.error , '',  {duration: 600})
+          delay(300)
+          this.router.navigate([this.returnUrl]);
         });
   }
 }

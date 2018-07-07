@@ -3,7 +3,11 @@ import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
   MatFormFieldModule,
-  MatInputModule, MatOptionModule, MatSelectModule,
+  MatInputModule,
+  MatOptionModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSnackBarModule,
   MatTableModule,
   MatTabsModule,
   MatToolbarModule
@@ -21,7 +25,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   exports: [
     CommonModule,
@@ -33,6 +39,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
-    MatTableModule],
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
+  ],
+
+
 })
 export class CustomMaterialModule { }

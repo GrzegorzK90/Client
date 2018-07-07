@@ -4,20 +4,19 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
-import { AlertComponent } from './_directives';
 import { AuthGuard } from './_guards';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import {AlertService, AuthenticationService, MyWorkService, TaskService, UserService, WorkByPersonService} from './_services';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
-import { TaskComponent } from './task';
-import { ProjectComponent } from './project/project.component';
+import { AuthenticationService, MyWorkService, TaskService, UserService, WorkByPersonService} from './_services';
+import { LoginComponent } from './_component/login';
+import { RegisterComponent } from './_component/register';
+import { TaskComponent } from './_component/task';
+import { ProjectComponent } from './_component/project/project.component';
 import {CustomMaterialModule} from './material.module';
-import {WorkByPersonComponent} from './work-by-person';
+import {WorkByPersonComponent} from './_component/work-by-person';
 import {DragulaModule} from 'ng2-dragula';
-import {MyWorkComponent} from './my-work';
-import {AddTaskComponent} from './task';
-import {BacklogComponent} from './backlog';
+import {MyWorkComponent} from './_component/my-work';
+import {AddTaskComponent} from './_component/task';
+import {BacklogComponent} from './_component/backlog';
 
 @NgModule({
   imports: [
@@ -32,7 +31,6 @@ import {BacklogComponent} from './backlog';
   ],
   declarations: [
     AppComponent,
-    AlertComponent,
     LoginComponent,
     RegisterComponent,
     TaskComponent,
@@ -44,7 +42,6 @@ import {BacklogComponent} from './backlog';
   ],
   providers: [
     AuthGuard,
-    AlertService,
     AuthenticationService,
     UserService,
     WorkByPersonService,

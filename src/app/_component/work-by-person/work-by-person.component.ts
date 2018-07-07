@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DragulaService} from 'ng2-dragula';
-import {WorkByPersonService, UserService} from '../_services';
+import {WorkByPersonService, UserService} from '../../_services/index';
 import {ActivatedRoute, Router} from '@angular/router';
-import { UserTaskBoard} from '../_models';
+import {UserTaskBoard} from '../../_models/index';
 
 
 @Component({
   selector: 'app-work-by-person',
   templateUrl: './work-by-person.component.html',
   styleUrls: ['./work-by-person.component.css'],
-  providers: [ WorkByPersonService]
+  providers: [WorkByPersonService]
 })
 export class WorkByPersonComponent implements OnInit {
 
@@ -21,13 +21,15 @@ export class WorkByPersonComponent implements OnInit {
   taskStatusBefor: number;
   status: string;
 
-  param1: string;
 
   users: UserTaskBoard[] = [];
 
-  user = new UserTaskBoard;
 
-  constructor(public dragulaService: DragulaService, private userService: UserService , private workByPersonService: WorkByPersonService, private route: ActivatedRoute, private router: Router) {
+  constructor(public dragulaService: DragulaService,
+              private userService: UserService,
+              private workByPersonService: WorkByPersonService,
+              private route: ActivatedRoute,
+              private router: Router) {
     dragulaService.drag.subscribe((value) => {
       this.onDrag(value.slice(1));
     });
@@ -41,52 +43,47 @@ export class WorkByPersonComponent implements OnInit {
       this.onOut(value.slice(1));
     });
   }
+
   ngOnInit() {
-        this.workByPersonService.getData().subscribe(data => {
-          this.users = data;
-        });
-      }
+    this.workByPersonService.getData().subscribe(data => {
+      this.users = data;
+    });
+  }
 
   private onDrag(args) {
     const [e, el] = args;
     this.fromUserId = el.title;
     this.taskStatusBefor = el.id;
     this.taskChangeId = e.id;
-    // do something
   }
 
   private onDrop(args) {
     const [e, el] = args;
     this.toUserId = el.title;
     this.taskStatusAfter = el.id;
-    // console.log('Task nr ' + this.taskChangeId + ' Od uzytkownika nr ' + this.fromUserId + ' do uzytkownika ' +
-    // this.toUserId + ' Z statusem przed = ' + this.taskStatusBefor + ' zmienionym na ' + this.taskStatusAfter);
-    if (<number>this.taskStatusAfter == <number>0 ) {
+    if (<number>this.taskStatusAfter == <number>0) {
       this.status = 'open';
-    } else { this.status = 'done'; }
-    console.log(' ??????' + this.taskStatusAfter +' czyli ' + this.status);
+    } else {
+      this.status = 'done';
+    }
     this.workByPersonService.update(this.taskChangeId, this.toUserId, this.status).subscribe(data => console.log(data));
-    // do something
   }
 
   private onOver(args) {
     const [e, el] = args;
-    console.log('poza' + el);
-    // do something
   }
 
   private onOut(args) {
     const [e, el] = args;
 
-    // do something
   }
 
-
-  private infoXD(taskId: number) {
-    this.router.navigate(['/task/' + taskId]);
-  }
-  addTask() {
+  private addTask() {
     this.router.navigate(['/addTask/' + 0]);
+  }
+
+  private clicked(taskId: number) {
+    this.router.navigate(['/task/' + taskId]);
   }
 
 }
