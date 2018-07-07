@@ -1,4 +1,11 @@
-
+.test {
+  margin-top: 10px;
+  width: 100%;
+  min-height: 20%;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+}
 
 .text {
   width: 100%;

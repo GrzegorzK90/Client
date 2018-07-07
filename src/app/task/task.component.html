@@ -24,6 +24,20 @@
             <textarea class="text" [(ngModel)]="task.time" matInput placeholder=""></textarea>
           </mat-form-field>
         </mat-tab>
+        <mat-tab  label="Setting">
+          <div align="center" class="container" >
+          <mat-form-field class="test">
+            <input [(ngModel)]="task.title" matInput placeholder="Task title">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select [(ngModel)]="task.status" placeholder="Task status">
+              <mat-option value="open">open</mat-option>
+              <mat-option value="done">done</mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+        </mat-tab>
       </mat-tab-group>
     </div>
   </div>

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import {tokenKey} from '@angular/core/src/view';
-import {getToken} from 'codelyzer/angular/styles/cssLexer';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {

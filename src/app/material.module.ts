@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
-  MatFormFieldControl,
   MatFormFieldModule,
   MatInputModule, MatOptionModule, MatSelectModule,
   MatTableModule,
@@ -12,9 +11,28 @@ import {
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
-  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatTabsModule, BrowserAnimationsModule, MatFormFieldModule, MatInputModule, MatOptionModule,
-  MatSelectModule, ],
-  exports: [CommonModule, MatToolbarModule, MatButtonModule, MatTabsModule, BrowserAnimationsModule, MatFormFieldModule, MatInputModule,  MatOptionModule,
-    MatSelectModule],
+  imports: [
+    CommonModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatTableModule
+  ],
+  exports: [
+    CommonModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatTableModule],
 })
 export class CustomMaterialModule { }

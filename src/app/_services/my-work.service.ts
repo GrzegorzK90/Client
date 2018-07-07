@@ -1,6 +1,6 @@
-import { Injectable} from '@angular/core';
-import {HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 
 @Injectable({
@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 export class MyWorkService {
 
   constructor(private http: HttpClient,
-              private router: Router) {}
+              private router: Router) {
+  }
 
   getData() {
     return this.http.get<any>('http://localhost:8080/taskboard');
@@ -20,17 +21,8 @@ export class MyWorkService {
       body: {
         taskId: taskId,
         newUserId: newUserId,
-        newStatus: newStatus}
-    }); }
-
-  delete(taskId: number) {
-
-    return this.http.request('DELETE', 'http://localhost:8080/taskboard', {
-      body: { taskId: taskId }
+        newStatus: newStatus
+      }
     });
   }
-
-  //addTask(userId: number, taskId: number, taskName: string, type: number) {
-  //  this.task.push({userId: userId, taskId: taskId, taskName: taskName, type: type});
-  //}
 }

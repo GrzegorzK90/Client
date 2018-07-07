@@ -8,16 +8,16 @@ import { AlertComponent } from './_directives';
 import { AuthGuard } from './_guards';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import {AlertService, AuthenticationService, MyWorkService, TaskService, UserService, WorkByPersonService} from './_services';
-import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
-import { TaskComponent } from './task/task.component';
+import { TaskComponent } from './task';
 import { ProjectComponent } from './project/project.component';
 import {CustomMaterialModule} from './material.module';
 import {WorkByPersonComponent} from './work-by-person';
 import {DragulaModule} from 'ng2-dragula';
 import {MyWorkComponent} from './my-work';
-import {AddTaskComponent} from './task/addTask/addTask.component';
+import {AddTaskComponent} from './task';
+import {BacklogComponent} from './backlog';
 
 @NgModule({
   imports: [
@@ -28,11 +28,11 @@ import {AddTaskComponent} from './task/addTask/addTask.component';
     CustomMaterialModule,
     DragulaModule,
     FormsModule,
+
   ],
   declarations: [
     AppComponent,
     AlertComponent,
-    HomeComponent,
     LoginComponent,
     RegisterComponent,
     TaskComponent,
@@ -40,6 +40,7 @@ import {AddTaskComponent} from './task/addTask/addTask.component';
     WorkByPersonComponent,
     MyWorkComponent,
     AddTaskComponent,
+    BacklogComponent
   ],
   providers: [
     AuthGuard,
