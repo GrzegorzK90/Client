@@ -29,7 +29,6 @@ export class WorkByPersonService {
       body: { taskId: taskId }
     });
   }
-
   //addTask(userId: number, taskId: number, taskName: string, type: number) {
   //  this.task.push({userId: userId, taskId: taskId, taskName: taskName, type: type});
   //}

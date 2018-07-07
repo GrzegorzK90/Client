@@ -1,5 +1,6 @@
 <div class="wrapper" *ngFor="let us of users">
   <h2>{{us.userName}}</h2>
+  <a class="btn" align="right" (click)="addTask()" >Add task</a>
   <div class='wrapper'>
     <div class='container' [dragula]='"nested-bag"' [id]='0' [title]='us.userId'>
       <p>Open</p>

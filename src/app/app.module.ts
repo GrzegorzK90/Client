@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
@@ -13,14 +13,11 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { TaskComponent } from './task/task.component';
 import { ProjectComponent } from './project/project.component';
-import { BugsComponent } from './task/bugs/bugs.component';
-import { DescriptionComponent } from './task/description/description.component';
-import { SourceComponent } from './task/source/source.component';
-import { TimeComponent } from './task/time/time.component';
 import {CustomMaterialModule} from './material.module';
 import {WorkByPersonComponent} from './work-by-person';
 import {DragulaModule} from 'ng2-dragula';
 import {MyWorkComponent} from './my-work';
+import {AddTaskComponent} from './task/addTask/addTask.component';
 
 @NgModule({
   imports: [
@@ -29,7 +26,10 @@ import {MyWorkComponent} from './my-work';
     HttpClientModule,
     routing,
     CustomMaterialModule,
-    DragulaModule
+    DragulaModule,
+    FormsModule,
+
+
   ],
   declarations: [
     AppComponent,
@@ -39,12 +39,9 @@ import {MyWorkComponent} from './my-work';
     RegisterComponent,
     TaskComponent,
     ProjectComponent,
-    BugsComponent,
-    DescriptionComponent,
-    SourceComponent,
-    TimeComponent,
     WorkByPersonComponent,
-    MyWorkComponent
+    MyWorkComponent,
+    AddTaskComponent,
   ],
   providers: [
     AuthGuard,

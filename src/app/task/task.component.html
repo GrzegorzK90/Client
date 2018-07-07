@@ -1,24 +1,33 @@
 <div class="container">
+  <a class="btn"[routerLink]="['/workByPerson']">Back</a>
 <div class="row">
-  <a class="active"[routerLink]="['/workByPerson']">Back</a>
-  <div class="col-sm-9">
+
+  <div class="container">
+    <h2 align="center">{{task.title}}</h2>
     <mat-tab-group>
       <mat-tab label="Description">
-        <h1><app-description></app-description></h1>
+        <mat-form-field class="text">
+          <textarea class="text" [(ngModel)]="task.content"  matInput placeholder=""></textarea>
+        </mat-form-field>
       </mat-tab>
       <mat-tab label="Bugs">
-        <h1><app-bugs></app-bugs></h1>
+        <mat-form-field class="text">
+          <textarea class="text" [(ngModel)]="task.bugs"  matInput placeholder=""></textarea>
+        </mat-form-field>
       </mat-tab>
       <mat-tab label="Source">
-        <h1><app-source></app-source></h1>
+        <mat-form-field class="text">
+          <textarea class="text" [(ngModel)]="task.source" matInput placeholder=""></textarea>
+        </mat-form-field>
       </mat-tab>
       <mat-tab label="Time">
-        <h1><app-time></app-time></h1>
+        <mat-form-field class="text">
+          <textarea class="text" [(ngModel)]="task.time" matInput placeholder=""></textarea>
+        </mat-form-field>
       </mat-tab>
     </mat-tab-group>
   </div>
-  <div class="col-sm-3">
-    <p>inf</p>
-  </div>
 </div>
+  <a class="btn" (click)="save()" >Save</a>
+  <a class="btn" (click)="delete()" >Delete</a>
 </div>

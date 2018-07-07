@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DragulaService} from 'ng2-dragula';
 import {WorkByPersonService, UserService} from '../_services';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { UserTaskBoard} from '../_models';
 
 
@@ -21,14 +21,13 @@ export class WorkByPersonComponent implements OnInit {
   taskStatusBefor: number;
   status: string;
 
-
   param1: string;
 
   users: UserTaskBoard[] = [];
 
   user = new UserTaskBoard;
 
-  constructor(public dragulaService: DragulaService, private userService: UserService , private workByPersonService: WorkByPersonService, private route: ActivatedRoute) {
+  constructor(public dragulaService: DragulaService, private userService: UserService , private workByPersonService: WorkByPersonService, private route: ActivatedRoute, private router: Router) {
     dragulaService.drag.subscribe((value) => {
       this.onDrag(value.slice(1));
     });
@@ -82,11 +81,11 @@ export class WorkByPersonComponent implements OnInit {
     // do something
   }
 
-//USuwanie będzie w tasku z cofnieciem taska :D
-  private infoXD(taskId: number) {
-    console.log(taskId);
-    //Do usuwanie przepisz do klasy Task :D
-    //this.workByPersonService.delete(taskId).subscribe( data => console.log(data));
-  }
 
+  private infoXD(taskId: number) {
+    this.router.navigate(['/task/' + taskId]);
+  }
+  addTask() {
+    this.router.navigate(['/addTask/' + 0]);
+  }
 }

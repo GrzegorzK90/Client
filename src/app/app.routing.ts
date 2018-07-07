@@ -7,16 +7,16 @@ import { AuthGuard } from './_guards';
 import {TaskComponent} from './task';
 import {WorkByPersonComponent} from './work-by-person';
 import {MyWorkComponent} from './my-work';
+import {AddTaskComponent} from './task/addTask/addTask.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'task', component: TaskComponent, canActivate: [AuthGuard]},
+  { path: 'task/:id', component: TaskComponent, canActivate: [AuthGuard]},
   { path: 'workByPerson', component: WorkByPersonComponent, canActivate: [AuthGuard]},
   { path: 'myWork', component: MyWorkComponent, canActivate: [AuthGuard]},
-  { path: 'test', component: TaskComponent, canActivate: [AuthGuard], outlet: 'test'},
-
+  { path: 'addTask/:id', component: AddTaskComponent, canActivate: [AuthGuard]},
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
