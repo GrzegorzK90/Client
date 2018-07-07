@@ -88,4 +88,5 @@ export class WorkByPersonComponent implements OnInit {
   addTask() {
     this.router.navigate(['/addTask/' + 0]);
   }
+
 }

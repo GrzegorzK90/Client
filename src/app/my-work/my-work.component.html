@@ -1,17 +1,26 @@
+<div class="test" align="right">
+  <button mat-raised-button="primary" (click)="addTask()" >Add task</button>
+</div>
+<div class="wrapper">
+  <div class="wrapper">
+    <div class="first"><h4></h4></div>
+    <div class="container"><h3>Open</h3></div>
+    <div class="container"><h3>Done</h3></div>
+  </div>
+</div>
 <div class="wrapper" *ngFor="let us of users">
-  <h2>{{us.userName}}</h2>
-  <a class="btn" align="right" (click)="addTask()" >Add task</a>
   <div class='wrapper'>
+    <div class="first">
+      <h4>{{us.userName}}</h4>
+    </div>
     <div class='container' [dragula]='"nested-bag"' [id]='0' [title]='us.userId'>
-      <p>Open</p>
       <div *ngFor='let item of us.tasks.open' (click)="infoXD(item.taskId)" [innerHtml]='item.title' [id]='item.taskId'></div>
     </div>
     <div class='container' [dragula]='"nested-bag"' [id]='1' [title]='us.userId'>
-      <p>Done</p>
       <div *ngFor='let item of us.tasks.close' (click)="infoXD(item.taskId)" [innerHtml]='item.title' [id]='item.taskId'></div>
     </div>
   </div>
   <hr>
- <!-- {{us | json}}-->
+  <!-- {{us | json}}-->
 </div>
 

@@ -1,33 +1,34 @@
 <div class="container">
-  <a class="btn"[routerLink]="['/workByPerson']">Back</a>
-<div class="row">
-
-  <div class="container">
-    <h2 align="center">{{task.title}}</h2>
-    <mat-tab-group>
-      <mat-tab label="Description">
-        <mat-form-field class="text">
-          <textarea class="text" [(ngModel)]="task.content"  matInput placeholder=""></textarea>
-        </mat-form-field>
-      </mat-tab>
-      <mat-tab label="Bugs">
-        <mat-form-field class="text">
-          <textarea class="text" [(ngModel)]="task.bugs"  matInput placeholder=""></textarea>
-        </mat-form-field>
-      </mat-tab>
-      <mat-tab label="Source">
-        <mat-form-field class="text">
-          <textarea class="text" [(ngModel)]="task.source" matInput placeholder=""></textarea>
-        </mat-form-field>
-      </mat-tab>
-      <mat-tab label="Time">
-        <mat-form-field class="text">
-          <textarea class="text" [(ngModel)]="task.time" matInput placeholder=""></textarea>
-        </mat-form-field>
-      </mat-tab>
-    </mat-tab-group>
+  <button mat-raised-button color="primary" (click)="goBack()">Back</button>
+  <div class="row">
+    <div class="container">
+      <h2 align="center">{{task.title}}</h2>
+      <mat-tab-group>
+        <mat-tab label="Description">
+          <mat-form-field class="text">
+            <textarea class="text" [(ngModel)]="task.content" matInput placeholder=""></textarea>
+          </mat-form-field>
+        </mat-tab>
+        <mat-tab label="Bugs">
+          <mat-form-field class="text">
+            <textarea class="text" [(ngModel)]="task.bugs" matInput placeholder=""></textarea>
+          </mat-form-field>
+        </mat-tab>
+        <mat-tab label="Source">
+          <mat-form-field class="text">
+            <textarea class="text" [(ngModel)]="task.source" matInput placeholder=""></textarea>
+          </mat-form-field>
+        </mat-tab>
+        <mat-tab label="Time">
+          <mat-form-field class="text">
+            <textarea class="text" [(ngModel)]="task.time" matInput placeholder=""></textarea>
+          </mat-form-field>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
   </div>
-</div>
-  <a class="btn" (click)="save()" >Save</a>
-  <a class="btn" (click)="delete()" >Delete</a>
+  <div class="container" align="right">
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+    <button mat-raised-button color="primary" (click)="delete()">Delete</button>
+  </div>
 </div>

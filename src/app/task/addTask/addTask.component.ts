@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Task} from '../../_models';
 import {TaskService} from '../../_services';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-add-task',
@@ -13,7 +14,7 @@ export class AddTaskComponent implements OnInit {
   param: number;
   task = new Task;
 
-  constructor(private taskService: TaskService, private route: ActivatedRoute) {
+  constructor(private taskService: TaskService, private route: ActivatedRoute, private location: Location) {
     this.route.params.subscribe(params => {
       this.param = +params['id'];
       console.log(this.param);
@@ -27,6 +28,10 @@ export class AddTaskComponent implements OnInit {
 
   add() {
     this.taskService.addTask(this.task).subscribe(data => console.log(data));
+    this.goBack();
+  }
+  goBack() {
+    this.location.back();
   }
 
 }

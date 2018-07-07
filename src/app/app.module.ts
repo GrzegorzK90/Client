@@ -28,8 +28,6 @@ import {AddTaskComponent} from './task/addTask/addTask.component';
     CustomMaterialModule,
     DragulaModule,
     FormsModule,
-
-
   ],
   declarations: [
     AppComponent,
