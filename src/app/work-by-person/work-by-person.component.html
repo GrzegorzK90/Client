@@ -1,11 +1,11 @@
-<div class="wrapper" *ngFor="let us of users"  [id] ="us.userName">
+<div class="wrapper" *ngFor="let us of users">
   <h2>{{us.userName}}</h2>
   <div class='wrapper'>
-    <div class='container' [dragula]='"nested-bag"' [id]="1">
+    <div class='container' [dragula]='"nested-bag"' [id]='2' [title]='us.userId'>
       <p>Open</p>
       <div *ngFor='let item of us.tasks.open' (click)="infoXD(item.taskId)" [innerHtml]='item.title' [id]='item.taskId'></div>
     </div>
-    <div class='container' [dragula]='"nested-bag"' [id]="1">
+    <div class='container' [dragula]='"nested-bag"' [id]='3' [title]='us.userId'>
       <p>Done</p>
       <div *ngFor='let item of us.tasks.close' (click)="infoXD(item.taskId)" [innerHtml]='item.title' [id]='item.taskId'></div>
     </div>

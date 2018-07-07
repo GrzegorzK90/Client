@@ -7,24 +7,19 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class WorkByPersonService {
+export class TaskService {
+  constructor(private http: HttpClient, private router: Router) {
+  }
 
-  constructor(private http: HttpClient,
-              private router: Router) {}
+  //Pobranie informacji z taska
   getData() {
     return this.http.get<UserTaskBoard>('http://localhost:8080/taskboard');
   }
 
-
-
+  //Usuniecie taska -> przejscie na poprzednia strone
   delete(taskId: number) {
-
     return this.http.request('DELETE', 'http://localhost:8080/taskboard', {
-      body: { taskId: taskId }
+      body: {taskId: taskId}
     });
-  }
+  }}
 
-  //addTask(userId: number, taskId: number, taskName: string, type: number) {
-  //  this.task.push({userId: userId, taskId: taskId, taskName: taskName, type: type});
-  //}
-}

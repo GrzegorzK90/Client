@@ -6,5 +6,9 @@ export class Task {
   content: string;
   finished: boolean;
   status: string;
-  user: User;
+  userId: number;
+  //project: number;
+  bugs: string;
+  source: string;
+  time: string;
 }
