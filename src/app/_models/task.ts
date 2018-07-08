@@ -5,9 +5,8 @@ export class Task {
   finished: boolean;
   status: string;
   userId: number;
-
   bugs: string;
   source: string;
   time: string;
-  projectId: number;
+  project: number;
 }

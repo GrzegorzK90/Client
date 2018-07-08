@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DragulaService} from 'ng2-dragula';
 import {WorkByPersonService, UserService} from '../../_services/index';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserTaskBoard} from '../../_models/index';
+import {pipe, Subscription} from 'rxjs';
 
 
 @Component({
@@ -11,18 +12,19 @@ import {UserTaskBoard} from '../../_models/index';
   styleUrls: ['./work-by-person.component.css'],
   providers: [WorkByPersonService]
 })
-export class WorkByPersonComponent implements OnInit {
+export class WorkByPersonComponent implements OnInit, OnDestroy{
 
   //Tymczasowe do operacji na statusie XD
+  subscription: Subscription;
   fromUserId: number;
   toUserId: number;
   taskChangeId: number;
   taskStatusAfter: number;
   taskStatusBefor: number;
   status: string;
+  projectId: number;
 
-
-  users: UserTaskBoard[] = [];
+  users = new Array<UserTaskBoard>();
 
 
   constructor(public dragulaService: DragulaService,
@@ -45,7 +47,7 @@ export class WorkByPersonComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.workByPersonService.getData().subscribe(data => {
+    this.subscription = this.workByPersonService.getData().subscribe(data => {
       this.users = data;
     });
   }
@@ -55,6 +57,8 @@ export class WorkByPersonComponent implements OnInit {
     this.fromUserId = el.title;
     this.taskStatusBefor = el.id;
     this.taskChangeId = e.id;
+    this.projectId = e.title;
+    console.log('test' + this.projectId);
   }
 
   private onDrop(args) {
@@ -66,7 +70,7 @@ export class WorkByPersonComponent implements OnInit {
     } else {
       this.status = 'done';
     }
-    this.workByPersonService.update(this.taskChangeId, this.toUserId, this.status).subscribe(data => console.log(data));
+    this.subscription = this.workByPersonService.update(this.taskChangeId, this.toUserId, this.status, this.projectId).pipe().subscribe();
   }
 
   private onOver(args) {
@@ -84,6 +88,10 @@ export class WorkByPersonComponent implements OnInit {
 
   private clicked(taskId: number) {
     this.router.navigate(['/task/' + taskId]);
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
 }

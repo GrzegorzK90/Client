@@ -35,7 +35,7 @@ export class TaskService {
         bugs: task.bugs,
         source: task.source,
         time: task.time,
-        projectId: task.projectId,
+        project: task.project,
       }
     });
   }
@@ -46,7 +46,8 @@ export class TaskService {
         content: task.content,
         finished: task.finished,
         status: task.status,
-        userId: task.userId
+        userId: task.userId,
+        projectId: 0,
       }
     });
   }

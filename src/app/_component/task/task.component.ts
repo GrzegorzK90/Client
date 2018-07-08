@@ -36,7 +36,7 @@ export class TaskComponent implements OnInit {
       this.task.bugs = data.bugs;
       this.task.source = data.source;
       this.task.time = data.time;
-      this.task.projectId = data.projectId;
+      this.task.project = data.project;
     });
   }
 

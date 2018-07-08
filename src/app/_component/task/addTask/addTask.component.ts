@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Task} from '../../../_models/index';
-import {TaskService} from '../../../_services/index';
+import {Task} from '../../../_models';
+import {TaskService} from '../../../_services';
 import {Location} from '@angular/common';
 import {MatSnackBar} from '@angular/material';
 

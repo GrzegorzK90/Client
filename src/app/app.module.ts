@@ -10,13 +10,15 @@ import { AuthenticationService, MyWorkService, TaskService, UserService, WorkByP
 import { LoginComponent } from './_component/login';
 import { RegisterComponent } from './_component/register';
 import { TaskComponent } from './_component/task';
-import { ProjectComponent } from './_component/project/project.component';
+
 import {CustomMaterialModule} from './material.module';
 import {WorkByPersonComponent} from './_component/work-by-person';
 import {DragulaModule} from 'ng2-dragula';
 import {MyWorkComponent} from './_component/my-work';
 import {AddTaskComponent} from './_component/task';
 import {BacklogComponent} from './_component/backlog';
+
+import {ProjectService} from './_services';
 
 @NgModule({
   imports: [
@@ -26,19 +28,18 @@ import {BacklogComponent} from './_component/backlog';
     routing,
     CustomMaterialModule,
     DragulaModule,
-    FormsModule,
-
+    FormsModule
   ],
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     TaskComponent,
-    ProjectComponent,
     WorkByPersonComponent,
     MyWorkComponent,
     AddTaskComponent,
-    BacklogComponent
+    BacklogComponent,
+
   ],
   providers: [
     AuthGuard,
@@ -47,6 +48,7 @@ import {BacklogComponent} from './_component/backlog';
     WorkByPersonService,
     MyWorkService,
     TaskService,
+    ProjectService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 

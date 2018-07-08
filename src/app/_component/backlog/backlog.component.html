@@ -1,1 +1,46 @@
-.container
+<!--<div align="center"><h1>Backlog</h1></div>-->
+<!--<hr>-->
+<!--<div class="test" align="right">-->
+<!--</div>-->
+<!--<div class="wrapper">-->
+  <!--<div class="wrapper">-->
+    <!--<div class="menu"><h4>Project</h4>-->
+      <!--<hr>-->
+      <!--<mat-list>-->
+        <!--<mat-list-item> <button mat-stroked-button color="primary"> sdadasd </button> </mat-list-item>-->
+        <!--<mat-list-item> <button mat-stroked-button color="primary"> sdadasd </button> </mat-list-item>-->
+        <!--<mat-list-item> <button mat-stroked-button color="primary"> sdadasd </button> </mat-list-item>-->
+      <!--</mat-list>-->
+      <!--<hr>-->
+    <!--</div>-->
+    <!--<div class="container"></div>-->
+  <!--</div>-->
+<!--</div>-->
+
+<div align="center"><h1>Backlog</h1></div>
+<hr>
+<div class="test" align="right">
+  <button mat-raised-button="primary" (click)="addProject()" >Add task</button>
+</div>
+<div class="wrapper">
+  <div class="wrapper">
+    <div class="first"><h4></h4></div>
+    <div class="container"><h3>Open</h3></div>
+    <div class="container"><h3>Done</h3></div>
+  </div>
+</div>
+<div class="wrapper" *ngFor="let proj of projects">
+  <div class='wrapper'>
+    <div class="first">
+      <h4>{{proj.project.title}}</h4>
+    </div>
+    <div class='container' [dragula]='"nested-bag"' [id]='0' [title]='proj.projectId'>
+      <div *ngFor='let item of proj.taskPB.open' (click)="clicked(item.taskId)" [title]="item.userId" [innerHtml]='item.title' [id]='item.taskId'></div>
+    </div>
+    <div class='container' [dragula]='"nested-bag"' [id]='1' [title]='proj.projectId'>
+      <div *ngFor='let item of proj.taskPB.close' (click)="clicked(item.taskId)" [title]="item.userId" [innerHtml]='item.title' [id]='item.taskId'></div>
+    </div>
+  </div>
+  <hr>
+</div>
+

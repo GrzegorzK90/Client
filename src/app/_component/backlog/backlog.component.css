@@ -1,0 +1,54 @@
+.wrapper {
+  display: table;
+  width: 100%;
+}
+.first{
+  width: 10%;
+  display: table-cell;
+  background-color: white;
+  color: black;
+  text-align: center;
+  vertical-align: middle;
+
+}
+.container {
+  display: table-cell;
+  background-color: rgb(255, 255, 255);
+  width: 33%;
+  text-align: center;
+}
+.container div,
+.gu-mirror {
+  margin-left: 25%;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 50%;
+  height: auto;
+  align-items: center;
+  text-align-all: center;
+  background-color: rgba(63, 81, 181, 0.39);
+  transition: opacity 0.4s ease-in-out;
+}
+.container div {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+.gu-mirror {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+.container .ex-moved {
+  background-color: #354f94;
+}
+.container.ex-over {
+  background-color: rgb(54, 72, 154);
+}
+.handle {
+  padding: 0 5px;
+  margin-right: 5px;
+  background-color: rgb(0, 123, 255);
+  cursor: move;
+}

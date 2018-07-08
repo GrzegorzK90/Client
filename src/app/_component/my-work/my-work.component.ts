@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DragulaService} from 'ng2-dragula';
 import {MyWorkService, UserService} from '../../_services/index';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserTaskBoard} from '../../_models/index';
+import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -11,14 +12,16 @@ import {UserTaskBoard} from '../../_models/index';
   styleUrls: ['./my-work.component.css'],
   providers: [MyWorkService]
 })
-export class MyWorkComponent implements OnInit {
+export class MyWorkComponent implements OnInit, OnDestroy {
 
+  subscription: Subscription;
   fromUserId: number;
   toUserId: number;
   taskChangeId: number;
   taskStatusAfter: number;
   taskStatusBefor: number;
   status: string;
+  projectId: number;
 
   users: UserTaskBoard[] = [];
 
@@ -44,7 +47,7 @@ export class MyWorkComponent implements OnInit {
 
   ngOnInit() {
 
-    this.myWorkService.getData().subscribe(data => this.users = data);
+    this.subscription = this.myWorkService.getData().subscribe(data => {console.log(data), this.users = data});
   }
 
   private onDrag(args) {
@@ -52,6 +55,8 @@ export class MyWorkComponent implements OnInit {
     this.fromUserId = el.title;
     this.taskStatusBefor = el.id;
     this.taskChangeId = e.id;
+    this.projectId = e.title;
+    console.log('test' + this.projectId);
   }
 
   private onDrop(args) {
@@ -63,7 +68,7 @@ export class MyWorkComponent implements OnInit {
     } else {
       this.status = 'done';
     }
-    this.myWorkService.update(this.taskChangeId, this.toUserId, this.status).subscribe(data => console.log(data));
+    this.subscription = this.myWorkService.update(this.taskChangeId, this.toUserId, this.status, this.projectId).subscribe();
   }
 
   private onOver(args) {
@@ -79,5 +84,8 @@ export class MyWorkComponent implements OnInit {
   }
   private clicked(taskId: number) {
     this.router.navigate(['/task/' + taskId]);
+  }
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 }
