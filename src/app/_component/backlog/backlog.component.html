@@ -20,7 +20,7 @@
 <div align="center"><h1>Backlog</h1></div>
 <hr>
 <div class="test" align="right">
-  <button mat-raised-button="primary" (click)="addProject()" >Add task</button>
+  <button mat-raised-button="primary" (click)="addProject()" >Add project</button>
 </div>
 <div class="wrapper">
   <div class="wrapper">
@@ -32,7 +32,7 @@
 <div class="wrapper" *ngFor="let proj of projects">
   <div class='wrapper'>
     <div class="first">
-      <h4>{{proj.project.title}}</h4>
+      <button mat-button (click)="open(proj.projectId)">{{proj.project.title}}</button>
     </div>
     <div class='container' [dragula]='"nested-bag"' [id]='0' [title]='proj.projectId'>
       <div *ngFor='let item of proj.taskPB.open' (click)="clicked(item.taskId)" [title]="item.userId" [innerHtml]='item.title' [id]='item.taskId'></div>

@@ -19,6 +19,8 @@ import {AddTaskComponent} from './_component/task';
 import {BacklogComponent} from './_component/backlog';
 
 import {ProjectService} from './_services';
+import {AddProjectComponent} from './_component/backlog/addProject/addProject.component';
+import {EditProjectComponent} from './_component/backlog/editProject/editProject.component';
 
 @NgModule({
   imports: [
@@ -39,6 +41,8 @@ import {ProjectService} from './_services';
     MyWorkComponent,
     AddTaskComponent,
     BacklogComponent,
+    AddProjectComponent,
+    EditProjectComponent,
 
   ],
   providers: [

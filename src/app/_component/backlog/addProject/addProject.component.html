@@ -1,0 +1,13 @@
+<h2 align="center">Adding Task</h2>
+<div class="container">
+  <mat-form-field>
+    <input [(ngModel)]="project.title" matInput placeholder="Task title">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea [(ngModel)]="project.content" matInput placeholder="Task description"></textarea>
+  </mat-form-field>
+
+  <button mat-button color="primary" (click)="add()">Add</button>
+</div>
+

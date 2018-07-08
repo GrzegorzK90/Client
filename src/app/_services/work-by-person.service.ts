@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {Project, Task} from '../_models';
 
 
 @Injectable({
@@ -17,7 +18,7 @@ export class WorkByPersonService {
   }
 
   update(taskId: number, newUserId: number, newStatus: string, projectId: number) {
-    console.log(projectId, ' ' , newStatus, ' ', newUserId, ' ', taskId);
+    console.log(projectId, ' ', newStatus, ' ', newUserId, ' ', taskId);
     return this.http.request('PUT', 'http://localhost:8080/taskboard', {
       body: {
         taskId: taskId,
@@ -27,4 +28,6 @@ export class WorkByPersonService {
       }
     });
   }
+
+
 }
