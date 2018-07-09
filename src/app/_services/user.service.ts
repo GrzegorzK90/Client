@@ -1,34 +1,32 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import { User } from '../_models';
+import {User} from '../_models';
 
 @Injectable()
 export class UserService {
-  header = new HttpHeaders().set('Authorization', 'Bearer').set( 'Content-Type', 'application/json');
-  constructor(private http: HttpClient) { }
+  header = new HttpHeaders().set('Authorization', 'Bearer').set('Content-Type', 'application/json');
 
-  getAll() {
-    return this.http.get<User[]>(`http://localhost:8080/users`);
+  constructor(private http: HttpClient) {
   }
 
-  getById(id: number) {
-    return this.http.get(`http://localhost:8080/users/` + id);
-  }
-
-  getData() {
-    return this.http.get(`http://localhost:8080/taskboard`);
+  getLoged() {
+    return this.http.get<User>(`http://localhost:8080/getlogged`);
   }
 
   register(user: User) {
     return this.http.post(`http://localhost:8080/signup`, user, {headers: this.header});
   }
 
-  update(user: User) {
-    return this.http.put(`http://localhost:8080/users/` + user.id, user);
+  save(user: User) {
+    return this.http.put(`http://localhost:8080/user/`, {
+      email: user.email,
+      password: user.password,
+      lastname: user.lastName,
+    });
   }
 
-  delete(id: number) {
-    return this.http.delete(`http://localhost:8080/users/` + id);
+  delete() {
+    return this.http.delete(`http://localhost:8080/users`);
   }
 }

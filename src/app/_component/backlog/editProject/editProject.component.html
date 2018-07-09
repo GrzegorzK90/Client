@@ -2,26 +2,33 @@
   <button mat-raised-button color="primary" (click)="goBack()">Back</button>
   <div class="row">
     <div class="container">
-      <h2 align="center">{{proj.title}}</h2>
+      <h2 align="center">{{project.project.title}}</h2>
       <mat-tab-group>
         <mat-tab label="Description">
           <mat-form-field class="text">
-            <textarea class="text" [(ngModel)]="proj.content" matInput placeholder=""></textarea>
+            <textarea class="text" [(ngModel)]="project.project.content" matInput placeholder=""></textarea>
           </mat-form-field>
         </mat-tab>
         <mat-tab label="bugs">
           <mat-form-field class="text">
-            <textarea class="text" [(ngModel)]="project.bugs" matInput placeholder=""></textarea>
+            <textarea readonly class="text" [(ngModel)]="project.bugs" matInput placeholder=""></textarea>
           </mat-form-field>
-        </mat-tab>
-        <mat-tab label="Open" >
-          <!--<div *ngFor='let item of task.close' [title]="item.title"></div>-->
         </mat-tab>
         <mat-tab  label="Setting">
           <div align="center" class="container" >
             <mat-form-field class="test">
-              <input [(ngModel)]="proj.title" matInput placeholder="Task title">
+              <input [(ngModel)]="project.project.title" matInput placeholder="Task title">
             </mat-form-field>
+          </div>
+        </mat-tab>
+        <mat-tab label="Close">
+          <div class="container" *ngFor="let item of project.taskPB.close">
+            <mat-list-item>{{item.taskId}} - {{item.title}}</mat-list-item>
+          </div>
+        </mat-tab>
+        <mat-tab label="Open">
+          <div class="container" *ngFor="let item of project.taskPB.open">
+            <mat-list-item>{{item.taskId}} - {{item.title}}</mat-list-item>
           </div>
         </mat-tab>
       </mat-tab-group>

@@ -88,9 +88,14 @@ export class BacklogComponent implements OnInit, OnDestroy {
   addProject() {
     this.router.navigate(['/addProject']);
   }
+
    private open(projectId: number) {
    this.router.navigate(['/editProject/' + projectId]);
    }
+
+  private clicked(taskID: number) {
+    this.router.navigate(['/task/' + taskID]);
+  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

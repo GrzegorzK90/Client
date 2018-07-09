@@ -15,9 +15,6 @@ export class EditProjectComponent implements OnInit {
 
   param: number;
   project = new ProjectPB;
-  proj = new Project;
-  task = new TaskPB;
-  open = new Task;
 
   constructor(private projectService: ProjectService,
               private route: ActivatedRoute,
@@ -32,26 +29,19 @@ export class EditProjectComponent implements OnInit {
     this.projectService.getDataProject(this.param).subscribe(data => {
        console.log(data);
        this.project = data;
-       this.proj = data.project;
-       this.task = data.project.taskPB;
-        // this.project.project.title = data.project.title;
-        // this.project.project.content = data.project.content;
-        // this.project.taskPB.close = data.project.taskPB.close;
-        // this.project.taskPB.open = this.project.taskPB.open;
-        // this.project.bugs = this.project.bugs;
     });
   }
 
 
-  // save() {
-  //   this.taskService.save(this.task).subscribe(data => console.log(data));
-  //   this.snackBar.open('Saved' , '',  {duration: 600});
-  // }
-  //
-  // delete() {
-  //   this.taskService.delete(this.param).subscribe(data => console.log(data));
-  //   this.goBack();
-  // }
+   save() {
+     this.projectService.save(this.project, this.param).subscribe(data => console.log(data));
+     this.snackBar.open('Saved' , '',  {duration: 600});
+   }
+
+   delete() {
+     this.projectService.delete(this.param).subscribe(data => console.log(data));
+     this.goBack();
+  }
   //
   goBack() {
     this.location.back();

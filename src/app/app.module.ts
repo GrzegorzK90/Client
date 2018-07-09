@@ -21,6 +21,7 @@ import {BacklogComponent} from './_component/backlog';
 import {ProjectService} from './_services';
 import {AddProjectComponent} from './_component/backlog/addProject/addProject.component';
 import {EditProjectComponent} from './_component/backlog/editProject/editProject.component';
+import {UserComponent} from './_component/user';
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import {EditProjectComponent} from './_component/backlog/editProject/editProject
     BacklogComponent,
     AddProjectComponent,
     EditProjectComponent,
+    UserComponent
 
   ],
   providers: [

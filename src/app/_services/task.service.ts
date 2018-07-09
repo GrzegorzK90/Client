@@ -24,6 +24,7 @@ export class TaskService {
   }
 
   save(task: Task) {
+    console.log(task);
     return this.http.request('PUT', 'http://localhost:8080/task', {
       body: {
         taskId: task.taskId,

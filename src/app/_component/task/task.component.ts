@@ -42,7 +42,7 @@ export class TaskComponent implements OnInit {
 
 
   save() {
-    this.taskService.save(this.task).subscribe(data => console.log(data));
+    this.taskService.save(this.task).subscribe();
     this.snackBar.open('Saved' , '',  {duration: 600});
   }
 

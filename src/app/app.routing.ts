@@ -9,6 +9,7 @@ import {AddTaskComponent} from './_component/task';
 import {BacklogComponent} from './_component/backlog';
 import {AddProjectComponent} from './_component/backlog/addProject/addProject.component';
 import {EditProjectComponent} from './_component/backlog/editProject/editProject.component';
+import {UserComponent} from './_component/user';
 
 const appRoutes: Routes = [
   { path: '', component: MyWorkComponent, canActivate: [AuthGuard] },
@@ -21,8 +22,7 @@ const appRoutes: Routes = [
   { path: 'addTask/:id', component: AddTaskComponent, canActivate: [AuthGuard]},
   { path: 'addProject', component: AddProjectComponent, canActivate: [AuthGuard]},
   { path: 'editProject/:id', component: EditProjectComponent, canActivate: [AuthGuard]},
-
-  // otherwise redirect to home
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '' }
 ];
 
