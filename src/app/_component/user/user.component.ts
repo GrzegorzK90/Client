@@ -14,7 +14,6 @@ import {validate} from 'codelyzer/walkerFactory/walkerFn';
 })
 export class UserComponent implements OnInit {
   user = new User;
-  test = 'test';
   private emailFormControl: FormControl;
   private passFormControl: FormControl;
   private lastNameFormControl: FormControl;
