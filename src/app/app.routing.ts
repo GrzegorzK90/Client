@@ -7,8 +7,8 @@ import {WorkByPersonComponent} from './_component/work-by-person';
 import {MyWorkComponent} from './_component/my-work';
 import {AddTaskComponent} from './_component/task';
 import {BacklogComponent} from './_component/backlog';
-import {AddProjectComponent} from './_component/backlog/addProject/addProject.component';
-import {EditProjectComponent} from './_component/backlog/editProject/editProject.component';
+import {AddProjectComponent} from './_component/backlog';
+import {EditProjectComponent} from './_component/backlog';
 import {UserComponent} from './_component/user';
 
 const appRoutes: Routes = [
